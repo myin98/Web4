@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jquery Home</title>
+ <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
+    <script type="text/javascript" src='/webjars/bootstrap/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src='/webjars/jquery/dist/jquery.min.js'></script>
+    <script type="text/javascript">
+$(document).ready(() => {
+	$("#btn1").on("click", () => {
+			//console.log("여기 왔으!");
+			$.ajax("/test").done((d)=>{
+			console.log(d);
+			$("#no").text(d.no);
+			$("#nm").val(d.nm);
+		});
+	});
+});
+	</script>
+    
+    
+</head>
+<body>
+
+	<button type="button" class="btn btn-primary" id="btn1">Test 호출</button>
+	
+	<p id="no"></p>
+	<br>
+	<input type="text" id="nm">
+	
+</body>
+</html>
