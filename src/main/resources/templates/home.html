@@ -16,5 +16,29 @@
   <button type="button" class="btn btn-warning">회원정보</button>
 </div>
 </div>
+
+<div class="container">
+        <h1>Board Information</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>User Name</th>
+                    <th>User Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board : ${boards}">
+                    <td th:text="${board.noticeNo}"></td>
+                    <td th:text="${board.noticeTitle}"></td>
+                    <td th:text="${board.noticeContent}"></td>
+                    <td th:text="${board.userNm}"></td>
+                    <td th:text="${board.userRole}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> <!-- /container -->
 </body>
 </html>

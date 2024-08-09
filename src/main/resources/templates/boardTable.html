@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Company</title>
+<link rel='stylesheet' href="/webjars/bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/home.css">
+<script type="text/javascript" src="/js/home.js"></script> 
+      
+</head>
+
+<div class="container my-3">
+<div class="btn-group d-flex justify-content-center" role="group">
+  <a href="/login" type="button" class="btn btn-primary" th:if="${session.userRole == null}">로그인</a>
+  <a href="/logout" type="button" class="btn btn-success" th:if="${session.userRole != null}">로그아웃</a>
+  <button type="button" class="btn btn-warning" th:if="${session.userRole != null}">회원정보</button>
+</div>
+</div>
+<body>
+
+    <div class="container" style="background-color: #343a40;  border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);">
+        <h1 style="color: #f8f9fa; margin-bottom: 20px; font-size: 2rem; text-align: center;">Board Information</h1>
+        <table class="table table-striped" style="background-color: #495057; border-radius: 8px; overflow: hidden; width: 100%; border-collapse: collapse; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+            <thead>
+                <tr>
+                    <th style=" background-color: #312529; font-weight: bold;">#</th>
+                    <th style=" background-color: #312529; font-weight: bold;">Title</th>
+                    <th style=" background-color: #312529; font-weight: bold;">Content</th>
+                    <th style=" background-color: #312529; font-weight: bold;">User Name</th>
+                    <th style=" background-color: #312529; font-weight: bold;">User Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board : ${boards}" style="font-weight: bold;">
+                    <td th:text="${board.noticeNo}"></td>
+                    <td th:text="${board.noticeTitle}"></td>
+                    <td th:text="${board.noticeContent}"></td>
+                    <td th:text="${board.userNm}"></td>
+                    <td th:text="${board.userRole}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> <!-- /container -->
+</body>
+</html>

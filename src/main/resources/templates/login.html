@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>LOGIN</title>
+<link rel='stylesheet' href="/webjars/bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+
+	<main class="form-signin w-100 m-auto">
+	  <form th:action="@{/login}" method="post">
+	  	<div class="text-center">
+	  		<a href="/">
+	    		<img id="logo" class="mb-4 rounded" style="border-radius: 50% !important;" src="https://avatars.githubusercontent.com/u/20333260?v=4" alt="logo" width="72" height="72">
+	    	</a>
+	    	<h1 class="h3 mb-3 fw-normal">로그인 화면</h1>
+	    </div>
+	
+	    <div class="form-floating">
+	      <input type="text" class="form-control" id="userNm" name="userNm" placeholder="username">
+	      <label for="userNm">사용자 이름</label>
+	    </div>
+	    <div class="form-floating">
+	      <input type="password" class="form-control" id="userPwd" name="userPwd" placeholder="Password">
+	      <label for="userPwd">사용자 비밀번호</label>
+	    </div>
+		<div class="d-grid gap-2">
+		    <button class="btn btn-primary btn-block" type="submit">로그인</button>
+		</div>
+	    <div class="text-center">
+	    	<p class="mt-5 mb-3 text-body-secondary">&copy; Company</p>
+	    </div>
+	  </form>
+	</main>
+
+</body>
+</html>

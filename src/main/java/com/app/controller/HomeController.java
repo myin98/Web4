@@ -31,7 +31,7 @@ public class HomeController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/login")
+	@PostMapping("/logins")
 	public Map<String, Object> login(HttpServletRequest req){
 		Map<String, Object> rm = new HashMap<>();
 		rm.put("status", true);
@@ -42,7 +42,7 @@ public class HomeController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/info")
+	@PostMapping("/infos")
 	public Map<String, Object> info(HttpServletRequest req){
 		Map<String, Object> rm = new HashMap<>();
 		
@@ -54,7 +54,7 @@ public class HomeController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/logout")
+	@PostMapping("/logouts")
 	public Map<String, Object> logout(HttpServletRequest req){
 		Map<String, Object> rm = new HashMap<>();
 		HttpSession session = req.getSession();
