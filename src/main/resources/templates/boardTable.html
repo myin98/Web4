@@ -13,9 +13,9 @@
 
 <div class="container my-3">
 <div class="btn-group d-flex justify-content-center" role="group">
-  <a href="/login" type="button" class="btn btn-primary" th:if="${session.userRole == null}">로그인</a>
-  <a href="/logout" type="button" class="btn btn-success" th:if="${session.userRole != null}">로그아웃</a>
-  <button type="button" class="btn btn-warning" th:if="${session.userRole != null}">회원정보</button>
+  <a href="/login" type="button" class="btn btn-primary" th:if="${session.userNo == null}">로그인</a>
+  <a href="/logout" type="button" class="btn btn-success" th:if="${session.userNo != null}">로그아웃</a>
+  <button type="button" class="btn btn-warning" th:if="${session.userNo != null}">회원정보</button>
 </div>
 </div>
 <body>
@@ -29,7 +29,7 @@
                     <th style=" background-color: #312529; font-weight: bold;">Title</th>
                     <th style=" background-color: #312529; font-weight: bold;">Content</th>
                     <th style=" background-color: #312529; font-weight: bold;">User Name</th>
-                    <th style=" background-color: #312529; font-weight: bold;">User Role</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
                     <td th:text="${board.noticeTitle}"></td>
                     <td th:text="${board.noticeContent}"></td>
                     <td th:text="${board.userNm}"></td>
-                    <td th:text="${board.userRole}"></td>
+                    
                 </tr>
             </tbody>
         </table>

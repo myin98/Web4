@@ -11,7 +11,7 @@ import com.app.dto.BoardTableDTO;
 public interface CompanyMapper {
 
 	@Select("select a.noticeNo , a.noticeTitle , a.noticeContent , "
-			+ "			b.userNm, b.userRole "
+			+ "			b.userNm"
 			+ "			from company.notice AS a "
 			+ "left join company.`user` AS b on a.userNo = b.userNo ORDER BY a.noticeNo DESC; ")
 	public List<BoardTableDTO> BoardTable(BoardTableDTO boardTableDTO);

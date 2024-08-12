@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.app.dto.BoardTableDTO;
 import com.app.dto.BoardUserDTO;
 import com.app.dto.BoardUserResultDTO;
+import com.app.dto.RoleDTO;
 import com.app.service.CompanyService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -54,7 +55,7 @@ public class CompanyController {
 			HttpSession http = req.getSession();
 			http.setAttribute("userNo", burDTO.getUserDTO().getUserNo());
 			http.setAttribute("userNm", burDTO.getUserDTO().getUserNm());
-			http.setAttribute("userRole", burDTO.getUserDTO().getUserRole());
+			http.setAttribute("userRoles", burDTO.getUserDTO().getUserRoles());
 			return "redirect:/";
 		}
 		return "redirect:/login";
@@ -77,7 +78,7 @@ public class CompanyController {
 			userDTO = new BoardUserDTO();
 			userDTO.setUserNo(Integer.parseInt(http.getAttribute("userNo").toString()));
 			userDTO.setUserNm(http.getAttribute("userNm").toString());
-			userDTO.setUserRole(http.getAttribute("userRole").toString());
+			userDTO.setUserRoles((List<RoleDTO>) http.getAttribute("userRoles"));
 			status = true;
 			message = userDTO.getUserNm() + "님 환영합니다";
 		}
@@ -87,7 +88,10 @@ public class CompanyController {
 				.userDTO(userDTO)
 				.build();
 	}
-	
+	@GetMapping("/test1")
+	public String test() {
+		return "test";
+	}
 	
 
 }

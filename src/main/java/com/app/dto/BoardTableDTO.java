@@ -14,6 +14,6 @@ public class BoardTableDTO {
 	private String noticeTitle;
 	private String noticeContent;
 	private String userNm;
-	private String userRole;
+	
 	
 }

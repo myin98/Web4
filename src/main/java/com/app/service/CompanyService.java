@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.app.dto.BoardTableDTO;
 import com.app.dto.BoardUserDTO;
 import com.app.dto.BoardUserResultDTO;
+import com.app.dto.RoleDTO;
 import com.app.mapper.CompanyMapper;
 import com.app.mapper.CompanyUserMapper;
 
@@ -32,10 +33,17 @@ public class CompanyService {
 			int userNo = Integer.parseInt(http.getAttribute("userNo").toString());
 			int nUserNo = cm.check(noticeNo);
 			if(userNo == nUserNo) {
-				return noticeNo + "해당 글 접근 가능";
+				return noticeNo + "번호의 글 접근 가능";
+			}	
+			List<RoleDTO> roles = (List<RoleDTO>) http.getAttribute("userRoles");
+			for(RoleDTO role : roles) {
+	//			System.out.println(role);
+				if("ADMIN".equals(role.getRoleNm())) {
+					return noticeNo + "번호의 글 접근 가능";
+				}
 			}
 		}
-		return noticeNo + "해당 글 접근 불가";
+		return noticeNo + "번호의 글 접근 불가";
 	}
 	
 	@Autowired
@@ -48,6 +56,10 @@ public class CompanyService {
 		if(userDTO != null) {
 			status = true;
 			message = userDTO.getUserNm() + "님 환영합니다";
+			//사용자 권한 목록 가져오기
+			List<RoleDTO> roles = cum.findByRoles(userDTO.getUserNo());
+			userDTO.setUserRoles(roles);
+			
 		}
 		return BoardUserResultDTO.builder()
 				.status(status)
